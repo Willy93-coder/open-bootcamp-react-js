@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import GreetingStyled from "./components/pure/greetingStyled";
+// import Clock from "./components/pure/classComponent";
+// import GreetingStyled from "./components/pure/greetingStyled";
+import FunctionComponent from "./components/pure/functionComponent";
 // import Greeting from "./components/pure/greeting";
 // import GreetingF from "./components/pure/greetingF";
 // import TaskList from "./components/container/task_list";
@@ -20,7 +22,11 @@ function App() {
                 {/* Ejercicio 1 renderizado componente Contacto */}
                 {/* <ComponenteA /> */}
                 {/* <Ejemplo1></Ejemplo1> */}
-                <GreetingStyled name="Willy" />
+                {/* <GreetingStyled name="Willy" /> */}
+                {/* Componente clase ejercicio 2*/}
+                {/* <Clock /> */}
+                {/* Componente funcional ejercicio 2*/}
+                <FunctionComponent />
             </header>
         </div>
     );
