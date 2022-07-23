@@ -1,9 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
+import GreetingStyled from "./components/pure/greetingStyled";
 // import Greeting from "./components/pure/greeting";
 // import GreetingF from "./components/pure/greetingF";
 // import TaskList from "./components/container/task_list";
-import ComponenteA from "./components/container/componente_a";
+// import ComponenteA from "./components/container/componente_a";
+// import Ejemplo1 from "./hooks/Ejemplo1";
 
 function App() {
     return (
@@ -16,7 +18,9 @@ function App() {
                 {/* Componente de listado de tareas */}
                 {/* <TaskList /> */}
                 {/* Ejercicio 1 renderizado componente Contacto */}
-                <ComponenteA />
+                {/* <ComponenteA /> */}
+                {/* <Ejemplo1></Ejemplo1> */}
+                <GreetingStyled name="Willy" />
             </header>
         </div>
     );
