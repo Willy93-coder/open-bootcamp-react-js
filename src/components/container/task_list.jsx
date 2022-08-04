@@ -1,43 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Task } from "../../models/task.class";
-import { LEVELS } from "../../models/levels.enum";
 import TaskComponent from "../pure/task";
 import TaskForm from "../pure/forms/taskForm";
 
 const TaskList = () => {
-    const defaultTask1 = new Task(
-        "Example",
-        "Default description",
-        true,
-        LEVELS.NORMAL
-    );
-
-    const defaultTask2 = new Task(
-        "Example",
-        "Default description",
-        true,
-        LEVELS.URGENT
-    );
-
-    const defaultTask3 = new Task(
-        "Example",
-        "Default description",
-        true,
-        LEVELS.BLOCKING
-    );
-
     // Estado del componente
-    const [tasks, setTasks] = useState([
-        defaultTask1,
-        defaultTask2,
-        defaultTask3,
-    ]);
+    const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
 
     // Control del ciclo de vida
     useEffect(() => {
         console.log("Task State has been modified");
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
         return () => {
             console.log("TaskList componente is going to unmount...");
         };
@@ -63,10 +38,55 @@ const TaskList = () => {
 
     function addTask(task) {
         console.log("Complete this task: ", task);
-        const index = tasks.indexOf(task);
         const tempTask = [...tasks];
         tempTask.push(task);
         setTasks(tempTask);
+    }
+
+    const loadingStyle = {
+        color: "grey",
+        fontSize: "30px",
+        fontWeight: "bold",
+    };
+
+    const Table = () => {
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tasks.map((task, index) => {
+                        return (
+                            <TaskComponent
+                                key={index}
+                                task={task}
+                                completed={completeTask}
+                                remove={deletedTask}
+                            />
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
+    };
+
+    let tasksTable;
+
+    if (tasks.length > 0) {
+        tasksTable = <Table></Table>;
+    } else {
+        tasksTable = (
+            <div>
+                <h3> There are no tasks to show</h3>
+                <h4>Please, create one</h4>
+            </div>
+        );
     }
 
     return (
@@ -82,31 +102,15 @@ const TaskList = () => {
                     data-mdb-perfect-scrollbar="true"
                     style={{ position: "relative", height: "400px" }}
                 >
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Priority</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tasks.map((task, index) => {
-                                return (
-                                    <TaskComponent
-                                        key={index}
-                                        task={task}
-                                        completed={completeTask}
-                                        remove={deletedTask}
-                                    />
-                                );
-                            })}
-                        </tbody>
-                    </table>
+                    {/* TODO: Add Loading Spinner */}
+                    {loading ? (
+                        <p style={loadingStyle}>Loading tasks...</p>
+                    ) : (
+                        tasksTable
+                    )}
                 </div>
             </div>
-            <TaskForm add={addTask}></TaskForm>
+            <TaskForm add={addTask} length={tasks.length}></TaskForm>
         </div>
     );
 };
