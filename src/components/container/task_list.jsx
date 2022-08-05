@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import TaskFormik from "../pure/forms/taskFormik";
 import TaskComponent from "../pure/task";
-import TaskForm from "../pure/forms/taskForm";
+// import TaskForm from "../pure/forms/taskForm";
 
 const TaskList = () => {
     // Estado del componente
@@ -110,7 +111,8 @@ const TaskList = () => {
                     )}
                 </div>
             </div>
-            <TaskForm add={addTask} length={tasks.length}></TaskForm>
+            {/* <TaskForm add={addTask} length={tasks.length}></TaskForm> */}
+            <TaskFormik add={addTask} length={tasks.length} />
         </div>
     );
 };
