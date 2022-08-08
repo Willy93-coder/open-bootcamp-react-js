@@ -7,17 +7,17 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 // ! Importante: los estilos propios, deben ir debajo del bootstrap para que no los pise.
 import "./index.css";
 
-// import App from "./App";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AppRoutingOne from "./AppRoutingOne";
-import AppRoutingFinal from "./AppRoutingFinal";
+// import AppRoutingOne from "./AppRoutingOne";
+// import AppRoutingFinal from "./AppRoutingFinal";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        {/* <App /> */}
+        <App />
         {/* <AppRoutingOne /> */}
-        <AppRoutingFinal />
+        {/* <AppRoutingFinal /> */}
     </React.StrictMode>
 );
 

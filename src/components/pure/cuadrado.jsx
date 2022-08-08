@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cuadrado = ({ colores, cambiarColor }) => {
+const Cuadrado = ({ colores, cambiarColor, stopColor }) => {
     return (
         <div>
             <div
@@ -10,6 +10,8 @@ const Cuadrado = ({ colores, cambiarColor }) => {
                     backgroundColor: `${colores}`,
                 }}
                 onMouseOver={cambiarColor}
+                onMouseOut={stopColor}
+                onDoubleClick={stopColor}
             ></div>
         </div>
     );
